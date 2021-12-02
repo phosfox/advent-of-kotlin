@@ -6,7 +6,6 @@ typealias Instruction = Pair<String, Int>;
 
 private val lines = File("src/main/kotlin/days/two/input.txt").readLines()
 
-
 fun parseInstructions(ls: List<String>): List<Instruction> {
     val ret = ls.map {
         val (cmd, num) = it.split(" ")
@@ -18,8 +17,8 @@ fun parseInstructions(ls: List<String>): List<Instruction> {
 fun part1() {
     var depths = 0;
     var horPos = 0;
-    val commands = parseInstructions(lines)
-    commands.forEach {
+    val instructions = parseInstructions(lines)
+    instructions.forEach {
         val (operation, num) = it
         when (operation) {
             "forward" -> horPos += num
@@ -35,8 +34,8 @@ fun part2() {
     var depths = 0;
     var horPos = 0;
     var aim = 0
-    val commands = parseInstructions(lines)
-    commands.forEach {
+    val instructions = parseInstructions(lines)
+    instructions.forEach {
         val (operation, num) = it
         when (operation) {
             "forward" -> {
