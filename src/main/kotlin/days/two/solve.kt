@@ -30,6 +30,26 @@ fun part1() {
     println(depths * horPos)
 }
 
+fun part15() {
+    data class Position(var h: Int, var d: Int)
+
+    parseInstructions(lines)
+        .fold(
+            Position(0, 0)
+        ) { acc, (operation, num) ->
+            when (operation) {
+                "forward" -> acc.apply { h += num }
+                "down" -> acc.apply { d += num }
+                "up" -> acc.apply { d -= num }
+                else -> acc
+            }
+        }.let {
+            println(it.h * it.d)
+
+        }
+}
+
+
 fun part2() {
     var depths = 0;
     var horPos = 0;

@@ -1,7 +1,7 @@
-import days.two.part1
-import days.two.part2
+import days.three.part1
+
+
 
 fun main() {
     part1()
-    part2()
 }
