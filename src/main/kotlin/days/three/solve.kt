@@ -2,35 +2,23 @@ package days.three
 
 import java.io.File
 
-val test = listOf(
-    "00100",
-    "11110",
-    "10110",
-    "10111",
-    "10101",
-    "01111",
-    "00111",
-    "11100",
-    "10000",
-    "11001",
-    "00010",
-    "01010"
-).map { outer -> outer.map { it.digitToInt() } }
+typealias Grid<T> = List<List<T>>
 
+fun <T> Grid<T>.column(index: Int): List<T> {
+    return this.map { it[index] }
+}
 
 val binaries =
     File("src/main/kotlin/days/three/input.txt").readLines().map { outerIt -> outerIt.map { it.digitToInt() } }
 
-fun column(ls: List<List<Int>>, idx: Int): List<Int> {
-    return ls.map { it[idx] }
-}
+
 
 fun mostFrequent(ls: List<List<Int>>, colIndex: Int): Int? {
-    return column(ls, colIndex).groupingBy { it }.eachCount().maxByOrNull { it.value }?.key
+    return ls.column(colIndex).groupingBy { it }.eachCount().maxByOrNull { it.value }?.key
 }
 
 fun leastFrequent(ls: List<List<Int>>, colIndex: Int): Int? {
-    return column(ls, colIndex).groupingBy { it }.eachCount().minByOrNull { it.value }?.key
+    return ls.column(colIndex).groupingBy { it }.eachCount().minByOrNull { it.value }?.key
 }
 
 fun frequencies(ls: List<Int>): Map<Int, Int> {
@@ -63,7 +51,7 @@ fun rating(ls: List<List<Int>>, criteria: (ls: List<Int>) -> Int): List<Int> {
     var ret = ls
     for(i in ls.first().indices) {
         if (ret.size == 1) return ret.flatten()
-        val pred = criteria(column(ret, i))
+        val pred = criteria(ret.column(i))
         ret = ret.filter { it[i] == pred}
     }
     return ret.flatten()
