@@ -35,6 +35,13 @@ fun toLines(ps: Pair<Coord, Coord>): List<Coord> {
     return lines
 }
 
+fun toDiagonales(ps: Pair<Coord, Coord>): List<Coord> {
+    val (left, right) = ps
+    val xRange = if (left.x < right.x) left.x.rangeTo(right.x) else left.x.downTo(right.x)
+    val yRange = if (left.y < right.y) left.y.rangeTo(right.y) else left.y.downTo(right.y)
+    return xRange.zip(yRange).map { Coord(it.first, it.second) }
+}
+
 fun parseLine(s: String): Pair<Coord, Coord> {
     val (start,end) = "(\\d+,\\d+) -> (\\d+,\\d+)".toRegex().find(s)!!.destructured
     return Pair(toCoord(start), toCoord(end))
@@ -47,5 +54,15 @@ fun part1() {
     val filtered = coordPairs.filter { (left, right) -> (left.x == right.x) or (left.y == right.y) }
     val lines = filtered.map { toLines(it) }
     val counts = lines.flatten().groupingBy { it }.eachCount().filterValues { it >= 2 }.size
+    println(counts)
+}
+fun part2() {
+    val coordPairs= File("src/main/kotlin/days/five/input.txt").readLines().map { parseLine(it) }
+    val filtered = coordPairs.filter { (left, right) -> (left.x == right.x) or (left.y == right.y) }
+    val notFiltered = coordPairs.filterNot { (left, right) -> (left.x == right.x) or (left.y == right.y) }
+    val lines = filtered.map { toLines(it) }
+    val diags = notFiltered.map { toDiagonales(it) }
+    val combined = lines + diags
+    val counts = combined.flatten().groupingBy { it }.eachCount().filterValues { it >= 2 }.size
     println(counts)
 }
