@@ -21,7 +21,7 @@ fun part1() {
 
 fun part2() {
     val positions = input.split(",").map(String::toInt)
-    val possiblePositions = positions.let { list -> list.minOrNull()?.rangeTo(list.maxOrNull()!!)?.toList() }
-    val fuelCosts = possiblePositions?.map { from -> positions.sumOf { to -> increasedFuelCost(from, to) } }
-    println(fuelCosts?.minOrNull())
+    val possiblePositions = positions.sorted().let { list -> list.first().rangeTo(list.last()).toList() }
+    val fuelCosts = possiblePositions.map { from -> positions.sumOf { to -> increasedFuelCost(from, to) } }
+    println(fuelCosts.minOrNull())
 }
