@@ -46,20 +46,18 @@ fun part1() {
 fun adjacents(grid: List<List<Int>>, root: Pair<Int, Int>): List<Pair<Int, Int>> {
     val (x, y) = root
     val nbs = listOf(Pair(x + 1, y), Pair(x - 1, y), Pair(x, y + 1), Pair(x, y - 1))
-    val adjs = nbs.filter { (x, y) -> (x >= 0 && x < grid.size) &&
-            (y >= 0 && y < grid.first().size)
-            && (grid[x][y] != 9)}
-    return adjs
+    return nbs.filter { (x, y) ->
+        (x >= 0 && x < grid.size) &&
+                (y >= 0 && y < grid.first().size)
+                && (grid[x][y] != 9)
+    }
 }
 
 fun basin(grid: List<List<Int>>, root: Pair<Int, Int>): Int {
     val explored = mutableSetOf(root)
     val q: Queue<Pair<Int, Int>> = LinkedList(listOf(root))
     while (q.isNotEmpty()) {
-        val v = q.poll()
-        if (v == null || grid[v.first][v.second] == 9) {
-            break
-        }
+        val v = q.poll() ?: break
         adjacents(grid, v).forEach { w ->
             if (!explored.contains(w)) {
                 explored.add(w)
