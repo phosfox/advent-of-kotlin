@@ -3,16 +3,6 @@ package days.ten
 import java.io.File
 import java.util.ArrayDeque
 
-typealias Stack<E> = MutableList<E>
-
-fun <E> Stack<E>.peek(): E? {
-    return this.getOrNull(0)
-}
-
-fun <E> Stack<E>.pop(): E? {
-    return this.removeFirstOrNull()
-}
-
 val testInput = File("src/main/kotlin/days/ten/test-input.txt").readLines()
 val input = File("src/main/kotlin/days/ten/input.txt").readLines()
 
@@ -60,7 +50,7 @@ fun closingChars(line: String): ArrayDeque<Char> {
     return stack
 }
 
-fun completionScore(ls: List<Char?>): Long {
+fun completionScore(ls: List<Char>): Long {
     val scores = mapOf(')' to 1, ']' to 2, '}' to 3, '>' to 4)
     return ls.fold(0) { acc, c -> (acc * 5) + scores.getOrDefault(c, 0) }
 }
@@ -71,7 +61,7 @@ fun part1() {
 
 fun part2() {
     val incomplete = input.filter { score(it) == 0 }
-    val res = incomplete.map { it -> closingChars(it).map { pairs[it] } }.map { completionScore(it) }
+    val res = incomplete.map { it -> closingChars(it).map { pairs[it]!! } }.map { completionScore(it) }
     val winner = res.sorted()[res.size / 2]
     println(winner)
 }
