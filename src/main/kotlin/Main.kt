@@ -1,5 +1,5 @@
-import days.nine.part1
-import days.nine.part2
+import days.ten.part1
+import days.ten.part2
 
 
 fun main() {
