@@ -69,7 +69,7 @@ fun allFlashed(grid: Grid) = grid.flatten().all { it == 0 }
 
 
 
-fun part1() {
+private fun part1() {
     val grid: Grid = File("src/main/kotlin/days/eleven/input.txt").readLines().map { it.chunked(1) }
         .map { line -> line.map { it.toInt() } }
     val res = generateSequence(Pair(grid, 0)) { (g, flashes) ->
@@ -79,7 +79,7 @@ fun part1() {
     println(res.last().second)
 }
 
-fun part2() {
+private fun part2() {
     var old: Grid = File("src/main/kotlin/days/eleven/input.txt").readLines().map { it.chunked(1) }
         .map { line -> line.map { it.toInt() } }
     var counter = 0
@@ -89,4 +89,9 @@ fun part2() {
         old = new.also { new = old} //funky
     }
     println(counter)
+}
+
+fun solve() {
+    part1()
+    part2()
 }
