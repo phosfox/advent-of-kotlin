@@ -1,8 +1,6 @@
-package days.twelve
+package days._12
 
 import utils.parse
-import java.util.*
-import kotlin.collections.ArrayDeque
 
 //procedure DFS(G, v) is
 //label v as discovered
@@ -51,7 +49,7 @@ fun dfs2(graph: Graph, start: String, smallCaves: Set<String>): MutableList<List
 }
 
 private fun part1() {
-    val graph = parse("src/main/kotlin/days/twelve/input.txt", {
+    val graph = parse("src/main/kotlin/days/_12/input.txt", {
         val (k, v) = it.split("-")
         listOf(k to v, v to k)
     }).flatten().groupBy({ it.first }, { it.second }).mapValues { it.value.toSet() }
@@ -61,7 +59,7 @@ private fun part1() {
 }
 
 private fun part2() {
-    val graph = parse("src/main/kotlin/days/twelve/input.txt", {
+    val graph = parse("src/main/kotlin/days/_12/input.txt", {
         val (k, v) = it.split("-")
         listOf(k to v, v to k)
     }).flatten().groupBy({ it.first }, { it.second }).mapValues { it.value.toSet() }

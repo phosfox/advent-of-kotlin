@@ -1,4 +1,4 @@
-package days.thirteen
+package days._13
 
 import utils.Grid
 import utils.Point
@@ -6,7 +6,7 @@ import utils.parse
 
 
 fun solve() {
-    val (dots, rawInstructions) = parse("src/main/kotlin/days/thirteen/input.txt", { it }, sep = "\n\n")
+    val (dots, rawInstructions) = parse("src/main/kotlin/days/_13/input.txt", { it }, sep = "\n\n")
     var grid: Grid<String> = Grid(dots.split("\n").associate {
         val (x, y) = it.split(",")
         Point(x.toInt(), y.toInt()) to "#"

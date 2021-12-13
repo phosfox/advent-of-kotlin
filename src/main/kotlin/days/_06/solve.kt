@@ -1,4 +1,4 @@
-package days.six
+package days._06
 
 import java.io.File
 
@@ -16,7 +16,7 @@ class Lanternfish(var age: Int) {
 
 
 fun part1() {
-    val init = File("src/main/kotlin/days/six/input.txt").readText().split(",").map(String::toInt)
+    val init = File("src/main/kotlin/days/_06/input.txt").readText().split(",").map(String::toInt)
     val fishes = ArrayList(init.map { Lanternfish(it)})
     for (i in 1..256) {
         val tempFishes = arrayListOf<Lanternfish>()
@@ -48,7 +48,7 @@ fun run(counts: Array<Long>, n: Int): Long {
 }
 
 fun part2() {
-    val input = File("src/main/kotlin/days/six/input.txt").readText()
+    val input = File("src/main/kotlin/days/_06/input.txt").readText()
     val counts = (0..8).map { num -> input.count { num.toString() == it.toString()} }.map { it.toLong() }
     println(run(arrayOf<Long>().plus(counts),256))
 

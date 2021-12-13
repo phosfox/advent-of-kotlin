@@ -1,4 +1,4 @@
-import days.thirteen.solve
+import days._13.solve
 
 
 fun main() {

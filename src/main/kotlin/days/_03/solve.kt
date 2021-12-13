@@ -1,4 +1,4 @@
-package days.three
+package days._03
 
 import java.io.File
 
@@ -9,7 +9,7 @@ fun <T> Grid<T>.column(index: Int): List<T> {
 }
 
 val binaries =
-    File("src/main/kotlin/days/three/input.txt").readLines().map { outerIt -> outerIt.map { it.digitToInt() } }
+    File("src/main/kotlin/days/_03/input.txt").readLines().map { outerIt -> outerIt.map { it.digitToInt() } }
 
 
 

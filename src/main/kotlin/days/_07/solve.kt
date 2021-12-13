@@ -1,4 +1,4 @@
-package days.seven
+package days._07
 
 import java.io.File
 
@@ -10,7 +10,7 @@ fun increasedFuelCost(from: Int, to: Int): Int {
     return (n*(n+1))/2
 }
 
-val input = File("src/main/kotlin/days/seven/input.txt").readText()
+val input = File("src/main/kotlin/days/_07/input.txt").readText()
 
 fun part1() {
     val positions = input.split(",").map(String::toInt)

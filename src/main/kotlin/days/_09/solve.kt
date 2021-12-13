@@ -1,4 +1,4 @@
-package days.nine
+package days._09
 
 import java.io.File
 import java.util.*
@@ -17,7 +17,7 @@ fun isLowPoint(height: Int, nbs: List<Int>): Boolean {
 
 
 fun part1() {
-    val testInput = File("src/main/kotlin/days/nine/input.txt").readLines()
+    val testInput = File("src/main/kotlin/days/_09/input.txt").readLines()
     val grid = testInput.map { line -> line.trim().chunked(1).map(String::toInt) }
     val lowPoints = arrayListOf<Int>()
     grid.forEachIndexed { x, row ->
@@ -69,7 +69,7 @@ fun basin(grid: List<List<Int>>, root: Pair<Int, Int>): Int {
 }
 
 fun part2() {
-    val testInput = File("src/main/kotlin/days/nine/input.txt").readLines()
+    val testInput = File("src/main/kotlin/days/_09/input.txt").readLines()
     val grid = testInput.map { line -> line.trim().chunked(1).map(String::toInt) }
     val lowPoints = arrayListOf<Pair<Int,Int>>()
     grid.forEachIndexed { x, row ->

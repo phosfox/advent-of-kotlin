@@ -1,12 +1,12 @@
-package days.eight
+package days._08
 
 import java.io.File
 
 val testInput =
-    File("src/main/kotlin/days/eight/test-input.txt").readLines().map { it.split(" | ").last().trim().split(" ") }
+    File("src/main/kotlin/days/_08/test-input.txt").readLines().map { it.split(" | ").last().trim().split(" ") }
         .flatten()
 val input =
-    File("src/main/kotlin/days/eight/input.txt").readLines().map { it.split(" | ").last().trim().split(" ") }.flatten()
+    File("src/main/kotlin/days/_08/input.txt").readLines().map { it.split(" | ").last().trim().split(" ") }.flatten()
 //Number:Segments
 //1:2,4:3,7:4,8:7
 
@@ -50,7 +50,7 @@ fun toNumber(signal: List<String>, output: List<Set<Char>>): Int {
 }
 
 fun part2() {
-    val testInput = File("src/main/kotlin/days/eight/input.txt").readLines()
+    val testInput = File("src/main/kotlin/days/_08/input.txt").readLines()
     val res = testInput.map { it.split(" | ") }.map { line -> toNumber(line.first().split(" "), line.last().split(" ").map { it.toSet() }) }
     println(res.sum())
 }

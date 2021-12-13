@@ -20,6 +20,6 @@ internal class SolveKtTest {
 
     @Test
     fun countIncreases() {
-        assertEquals(countIncreases(input), 7)
+        assertEquals(days._01.countIncreases(input), 7)
     }
 }

@@ -1,4 +1,4 @@
-package days.four
+package days._04
 
 import java.io.File
 
@@ -58,7 +58,7 @@ fun lastWinner(boards: List<List<List<Cell>>>, numbers: List<Int>): Pair<Int, In
 }
 
 
-val input = File("src/main/kotlin/days/four/input.txt").readLines()
+val input = File("src/main/kotlin/days/_04/input.txt").readLines()
 val numbers = input.first().split(",").map { it.toInt() }
 var boards = input.drop(1).filter { it != "" }.chunked(5).map { toBoard(it) }
 

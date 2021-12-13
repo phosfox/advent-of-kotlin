@@ -1,10 +1,10 @@
-package days.two
+package days._02
 
 import java.io.File
 
 typealias Instruction = Pair<String, Int>;
 
-private val lines = File("src/main/kotlin/days/two/input.txt").readLines()
+private val lines = File("src/main/kotlin/days/_02/input.txt").readLines()
 
 fun parseInstructions(ls: List<String>): List<Instruction> {
     val ret = ls.map {

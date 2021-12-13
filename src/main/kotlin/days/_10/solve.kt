@@ -1,10 +1,10 @@
-package days.ten
+package days._10
 
 import java.io.File
 import java.util.ArrayDeque
 
-val testInput = File("src/main/kotlin/days/ten/test-input.txt").readLines()
-val input = File("src/main/kotlin/days/ten/input.txt").readLines()
+val testInput = File("src/main/kotlin/days/_10/test-input.txt").readLines()
+val input = File("src/main/kotlin/days/_10/input.txt").readLines()
 
 val pairs = mapOf(
     '(' to ')', '{' to '}', '[' to ']', '<' to '>', ')' to '(', '}' to '{', ']' to '[', '>' to '<'

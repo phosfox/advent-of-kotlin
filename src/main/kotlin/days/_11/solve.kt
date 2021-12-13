@@ -1,4 +1,4 @@
-package days.eleven
+package days._11
 
 import java.io.File
 import java.util.*
@@ -70,7 +70,7 @@ fun allFlashed(grid: Grid) = grid.flatten().all { it == 0 }
 
 
 private fun part1() {
-    val grid: Grid = File("src/main/kotlin/days/eleven/input.txt").readLines().map { it.chunked(1) }
+    val grid: Grid = File("src/main/kotlin/days/_11/input.txt").readLines().map { it.chunked(1) }
         .map { line -> line.map { it.toInt() } }
     val res = generateSequence(Pair(grid, 0)) { (g, flashes) ->
         val (newGrid, newFlashes) = step(g)
@@ -80,7 +80,7 @@ private fun part1() {
 }
 
 private fun part2() {
-    var old: Grid = File("src/main/kotlin/days/eleven/input.txt").readLines().map { it.chunked(1) }
+    var old: Grid = File("src/main/kotlin/days/_11/input.txt").readLines().map { it.chunked(1) }
         .map { line -> line.map { it.toInt() } }
     var counter = 0
     while (!allFlashed(old)) {

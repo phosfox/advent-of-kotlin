@@ -1,4 +1,4 @@
-package days.five
+package days._05
 
 import java.io.File
 
@@ -50,14 +50,14 @@ fun parseLine(s: String): Pair<Coord, Coord> {
 
 
 fun part1() {
-    val coordPairs= File("src/main/kotlin/days/five/input.txt").readLines().map { parseLine(it) }
+    val coordPairs= File("src/main/kotlin/days/_05/input.txt").readLines().map { parseLine(it) }
     val filtered = coordPairs.filter { (left, right) -> (left.x == right.x) or (left.y == right.y) }
     val lines = filtered.map { toLines(it) }
     val counts = lines.flatten().groupingBy { it }.eachCount().filterValues { it >= 2 }.size
     println(counts)
 }
 fun part2() {
-    val coordPairs= File("src/main/kotlin/days/five/input.txt").readLines().map { parseLine(it) }
+    val coordPairs= File("src/main/kotlin/days/_05/input.txt").readLines().map { parseLine(it) }
     val filtered = coordPairs.filter { (left, right) -> (left.x == right.x) or (left.y == right.y) }
     val notFiltered = coordPairs.filterNot { (left, right) -> (left.x == right.x) or (left.y == right.y) }
     val lines = filtered.map { toLines(it) }
