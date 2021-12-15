@@ -1,6 +1,8 @@
 package utils
 
 import java.io.File
+import java.util.*
+import kotlin.Int.Companion.MAX_VALUE
 import kotlin.math.abs
 
 fun <T> parse(path: String, parser: (s: String) -> T, sep: String = "\n"): List<T> {
@@ -18,7 +20,7 @@ fun answer(dayNumber: Int, got: Int, expected: Int): Boolean {
 
 data class Point(val x: Int, val y: Int)
 
-class Grid<T>(private val map: Map<Point, T>) {
+class Grid<T>(val map: Map<Point, T>) {
 
     fun neighbours(point: Point): List<Point> {
         val (x, y) = point
@@ -85,6 +87,7 @@ class Grid<T>(private val map: Map<Point, T>) {
             println()
         }
     }
+
 }
 
 /*
