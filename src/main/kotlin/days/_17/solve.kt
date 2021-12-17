@@ -1,6 +1,7 @@
 package days._17
 
 import javax.lang.model.element.VariableElement
+import kotlin.system.measureTimeMillis
 
 
 data class TargetRange(val x: IntRange, val y: IntRange)
@@ -8,6 +9,7 @@ data class TargetRange(val x: IntRange, val y: IntRange)
 
 //target area: x=20..30, y=-10..-5
 val testTarget = TargetRange((20..30), (-10..-5))
+
 //target area: x=265..287, y=-103..-58
 val target = TargetRange((265..287), (-103..-58))
 
@@ -37,9 +39,17 @@ fun willHit(probe: Probe, target: TargetRange): Boolean {
     }
 }
 
-fun highestPoint(probe: Probe): Int {
-    val steps = generateSequence(probe) {step(it)}.dropWhile { it.yVel != 0 }.take(1).toList().first()
+fun slowHighestPoint(probe: Probe): Int {
+    val steps = generateSequence(probe) { step(it) }.dropWhile { it.yVel != 0 }.take(1).toList().first()
     return steps.y
+}
+
+fun highestPoint(probe: Probe): Int {
+    var newY = probe.y
+    for (vy in probe.yVel downTo 1) {
+        newY += vy;
+    }
+    return newY
 }
 
 fun part1() {
@@ -57,7 +67,24 @@ fun part1() {
     println("Highest Y: $highestY, highestYV: $highestYV")
 }
 
+fun part2() {
+    val t = target
+    val velocities = mutableSetOf<Probe>()
+    for (xV in 0..1000) {
+        for (yV in (t.y.first)..1000) {
+            val start = Probe(0, 0, xV, yV)
+            if (willHit(start, t) ) {
+                velocities.add(start)
+            }
+        }
+    }
+    println(velocities.size)
+
+}
+
 fun solve() {
-    part1()
+    //part1()
+    part2()
+
 }
 
